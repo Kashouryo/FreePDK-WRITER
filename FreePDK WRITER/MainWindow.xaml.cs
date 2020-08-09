@@ -53,6 +53,11 @@ namespace FreePDK_WRITER
             runInCmd($"easypdkprog.exe probe\npause");
         }
         private void runInCmd(string command) {
+            if (!File.Exists("easypdkprog.exe"))
+            {
+                MessageBox.Show("This program and easypdkprog.exe must present in the same directory.");
+                return;
+            }
             if (File.Exists("writecmd.bat"))
             {
                 File.Delete("writecmd.bat");
