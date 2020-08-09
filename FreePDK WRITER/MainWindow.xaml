@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FreePDK_WRITER"
+        x:Class="FreePDK_WRITER.MainWindow"
+        mc:Ignorable="d"
+        Title="FreePDK Writer [0.10]" Height="331" Width="495" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="filePathTextBox" HorizontalAlignment="Left" Height="22" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="426"/>
+        <Button x:Name="fileSelectButton" Click="fileSelectButton_Click" Content="..." HorizontalAlignment="Left" Height="22" Margin="441,40,0,0" VerticalAlignment="Top" Width="26"/>
+        <Label Content="HEX/IHX file path:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="113"/>
+        <ComboBox x:Name="mcuComboBox" HorizontalAlignment="Left" Height="27" Margin="10,97,0,0" VerticalAlignment="Top" Width="457" IsEditable="True" SelectedIndex="0">
+            <ComboBoxItem Content="pfs154"/>
+            <ComboBoxItem Content="pfs172"/>
+            <ComboBoxItem Content="pfs173"/>
+            <Separator/>
+            <ComboBoxItem Content="pms150c"/>
+            <ComboBoxItem Content="pms15a"/>
+            <ComboBoxItem Content="pms152"/>
+            <ComboBoxItem Content="pms154c"/>
+            <ComboBoxItem Content="pms171b"/>
+        </ComboBox>
+        <Label Content="MCU name:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Height="25" Width="77"/>
+        <GroupBox Header="Actions" HorizontalAlignment="Left" Height="100" Margin="10,183,0,0" VerticalAlignment="Top" Width="457">
+            <Grid HorizontalAlignment="Left" Height="81" Margin="0,0,-2,-3" VerticalAlignment="Top" Width="447">
+                <Button x:Name="programButton" Content="Program" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="79" Height="25" Click="programButton_Click"/>
+                <Button x:Name="readButton" Content="Read" HorizontalAlignment="Left" Margin="95,10,0,0" VerticalAlignment="Top" Width="79" Height="25"/>
+                <Button x:Name="runButton" Content="Run" HorizontalAlignment="Left" Margin="179,10,0,0" VerticalAlignment="Top" Width="79" Height="25" Click="runButton_Click"/>
+                <Slider x:Name="voltageSlider" TickFrequency="0.1" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="117" Maximum="5.5" Minimum="2" TickPlacement="BottomRight" ValueChanged="voltageSlider_ValueChanged" Value="5"/>
+                <Label Content="Run voltage:" HorizontalAlignment="Left" Margin="320,34,0,0" VerticalAlignment="Top" Width="82"/>
+                <Label Content="{Binding Value, ElementName=voltageSlider, UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="{}{0:N1}V" x:Name="voltageLabel" HorizontalAlignment="Left" Margin="402,34,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="probeButton" Content="Probe" HorizontalAlignment="Left" Margin="11,40,0,0" VerticalAlignment="Top" Width="79" Height="25" Click="probeButton_Click" RenderTransformOrigin="0.481,0.8"/>
+                <Button x:Name="extra1Button" Content="Read" HorizontalAlignment="Left" Margin="95,40,0,0" VerticalAlignment="Top" Width="79" Height="25" Visibility="Hidden"/>
+                <Button x:Name="extra2Button" Content="Run" HorizontalAlignment="Left" Margin="179,40,0,0" VerticalAlignment="Top" Width="79" Height="25" Visibility="Hidden"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="Custom arguements:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Height="25" Width="129"/>
+        <TextBox x:Name="userArgsTextBox" HorizontalAlignment="Left" Height="22" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"/>
+    </Grid>
+</Window>
